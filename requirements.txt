@@ -1,0 +1,7 @@
+transformers
+pytorch
+faiss
+datasets
+numpy
+tqdm
+seqeval
