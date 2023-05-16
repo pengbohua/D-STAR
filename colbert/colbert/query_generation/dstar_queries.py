@@ -27,8 +27,6 @@ logger.info('Starting query generation...')
 
 key1 = "KEY1"
 key2 = "KEY2"
-key1 = "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"
-key2 = "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"
 key_set = set()
 key_set.add(key1)
 key_set.add(key2)
