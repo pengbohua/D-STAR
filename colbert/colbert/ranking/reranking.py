@@ -20,7 +20,7 @@ def rerank(args):
     ranking_logger = RankingLogger(Run.path, qrels=None)
     milliseconds = 0
 
-    with ranking_logger.context('ranking.tsv', also_save_annotations=False) as rlogger:
+    with ranking_logger.context('rankings.tsv', also_save_annotations=False) as rlogger:
         queries = args.queries
         qids_in_order = list(queries.keys())
 

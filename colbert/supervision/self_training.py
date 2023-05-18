@@ -56,7 +56,7 @@ def sample_for_query(qid, ranking, npositives, depth_positive, depth_negative, c
 
 
 def main(args):
-    rankings = load_ranking(args.ranking, types=[int, int, int, float, int])
+    rankings = load_ranking(args.rankings, types=[int, int, int, float, int])
 
     print_message("#> Group by QID")
     qid2rankings = groupby_first_item(tqdm.tqdm(rankings))
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     parser = ArgumentParser(description='Create training triples from ranked list.')
 
     # Input / Output Arguments
-    parser.add_argument('--ranking', dest='ranking', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
     parser.add_argument('--output', dest='output', required=True, type=str)
 
     # Weak Supervision Arguments.

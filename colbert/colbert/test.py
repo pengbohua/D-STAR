@@ -13,7 +13,7 @@ from colbert.evaluation.metrics import evaluate_recall
 def main():
     random.seed(12345)
 
-    parser = Arguments(description='Exhaustive (slow, not index-based) evaluation of re-ranking with ColBERT.')
+    parser = Arguments(description='Exhaustive (slow, not index-based) evaluation of re-rankings with ColBERT.')
 
     parser.add_model_parameters()
     parser.add_tuning_parameters()

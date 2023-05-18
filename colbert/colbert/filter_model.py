@@ -26,7 +26,7 @@ from collections import OrderedDict, defaultdict
 def main():
     random.seed(12345)
 
-    parser = Arguments(description='End-to-end retrieval and ranking with ColBERT.')
+    parser = Arguments(description='End-to-end retrieval and rankings with ColBERT.')
 
     parser.add_model_parameters()
     parser.add_tuning_parameters()

@@ -121,7 +121,7 @@ if __name__ == "__main__":
     parser = ArgumentParser(description='Create training triples from ranked list.')
 
     # Input / Output Arguments
-    parser.add_argument('--ranking', dest='ranking', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
     parser.add_argument('--output', dest='output', required=True, type=str)
 
     # Weak Supervision Arguments.

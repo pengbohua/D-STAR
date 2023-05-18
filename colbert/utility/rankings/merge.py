@@ -1,5 +1,5 @@
 """
-    Divide two or more ranking files, by score.
+    Divide two or more rankings files, by score.
 """
 
 import os

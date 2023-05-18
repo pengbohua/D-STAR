@@ -4,7 +4,6 @@
 python -m colbert.query_generation.extract_zeshel_embs --amp --mask-punctuation \
 --doc_maxlen 300 \
 --bsize 256 \
---queries beir_eval/datasets/In-Zeshel/test_contextualized_less_overlap_samples.json \
 --checkpoint ../checkpoints/msmarco_colbert/colbert-150000.dnn \
 --root output \
 --queries ../data/scifact/mention_entity.json \

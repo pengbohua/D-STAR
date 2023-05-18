@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     parser = ArgumentParser(description='Subsample the dev set.')
     parser.add_argument('--qas', dest='qas', required=True, type=str)
-    parser.add_argument('--ranking', dest='ranking', required=True)
+    parser.add_argument('--rankings', dest='rankings', required=True)
     parser.add_argument('--output', dest='output', required=True)
 
     parser.add_argument('--sample', dest='sample', default=1500, type=int)

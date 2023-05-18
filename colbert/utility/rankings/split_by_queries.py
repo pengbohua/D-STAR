@@ -59,7 +59,7 @@ if __name__ == "__main__":
     parser = ArgumentParser(description='.')
 
     # Input Arguments
-    parser.add_argument('--ranking', dest='ranking', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
     parser.add_argument('--all-queries', dest='all_queries', required=True, type=str, nargs='+')
 
     args = parser.parse_args()

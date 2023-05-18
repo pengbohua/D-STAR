@@ -34,7 +34,7 @@ if __name__ == "__main__":
     random.seed(12345)
 
     parser = ArgumentParser(description='Subsample the dev set.')
-    parser.add_argument('--ranking', dest='ranking', required=True)
+    parser.add_argument('--rankings', dest='rankings', required=True)
 
     parser.add_argument('--names', dest='names', required=False, default=['train', 'dev', 'test'], type=str, nargs='+')  # order matters!
     parser.add_argument('--gap', dest='gap', required=False, default=1_000_000_000, type=int)  # larger than any individual query set

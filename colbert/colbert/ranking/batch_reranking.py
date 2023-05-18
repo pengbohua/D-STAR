@@ -101,7 +101,7 @@ def batch_rerank(args):
 
     ranking_logger = RankingLogger(Run.path, qrels=None, log_scores=args.log_scores)
 
-    with ranking_logger.context('ranking.tsv', also_save_annotations=False) as rlogger:
+    with ranking_logger.context('rankings.tsv', also_save_annotations=False) as rlogger:
         with torch.no_grad():
             for query_index, qid in enumerate(queries):
                 if query_index % 1000 == 0:

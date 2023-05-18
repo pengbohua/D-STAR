@@ -22,7 +22,7 @@ def retrieve(args):
     ranking_logger = RankingLogger(Run.path, qrels=None)
     milliseconds = 0
 
-    with ranking_logger.context('ranking.tsv', also_save_annotations=False) as rlogger:
+    with ranking_logger.context('rankings.tsv', also_save_annotations=False) as rlogger:
         queries = args.queries
         qids_in_order = list(queries.keys())
 
@@ -60,7 +60,7 @@ def retrieve(args):
     print(ranking_logger.filename)
     if args.ranking_dir:
         os.makedirs(args.ranking_dir, exist_ok=True)
-        shutil.copyfile(ranking_logger.filename, os.path.join(args.ranking_dir, "ranking.tsv"))
-        print("#> Copied to {}".format(os.path.join(args.ranking_dir, "ranking.tsv")))
+        shutil.copyfile(ranking_logger.filename, os.path.join(args.ranking_dir, "rankings.tsv"))
+        print("#> Copied to {}".format(os.path.join(args.ranking_dir, "rankings.tsv")))
     print("#> Done.")
     print('\n\n')

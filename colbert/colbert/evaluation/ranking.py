@@ -40,7 +40,7 @@ def evaluate(args):
 
     args.milliseconds = []
 
-    with ranking_logger.context('ranking.tsv', also_save_annotations=(qrels is not None)) as rlogger:
+    with ranking_logger.context('rankings.tsv', also_save_annotations=(qrels is not None)) as rlogger:
         with torch.no_grad():
             keys = sorted(list(queries.keys()))
             random.shuffle(keys)
@@ -84,5 +84,5 @@ def evaluate(args):
     print('\n\n')
     if qrels:
         assert query_idx + 1 == len(keys) == len(set(keys))
-        metrics.output_final_metrics(os.path.join(Run.path, 'ranking.metrics'), query_idx, len(queries))
+        metrics.output_final_metrics(os.path.join(Run.path, 'rankings.metrics'), query_idx, len(queries))
     print('\n\n')

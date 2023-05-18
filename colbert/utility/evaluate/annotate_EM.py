@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # Input / Output Arguments
     parser.add_argument('--qas', dest='qas', required=True, type=str)
     parser.add_argument('--collection', dest='collection', required=True, type=str)
-    parser.add_argument('--ranking', dest='ranking', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
 
     args = parser.parse_args()
 

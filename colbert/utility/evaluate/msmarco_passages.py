@@ -1,5 +1,5 @@
 """
-    Evaluate MS MARCO Passages ranking.
+    Evaluate MS MARCO Passages rankings.
 """
 
 import os
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     # Input Arguments.
     parser.add_argument('--qrels', dest='qrels', required=True, type=str)
-    parser.add_argument('--ranking', dest='ranking', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
     parser.add_argument('--annotate', dest='annotate', default=False, action='store_true')
 
     args = parser.parse_args()

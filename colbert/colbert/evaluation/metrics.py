@@ -56,20 +56,20 @@ class Metrics:
         assert query_idx >= self.max_query_idx
         self.max_query_idx = query_idx
 
-        Run.log_metric("ranking/max_query_idx", query_idx, query_idx)
-        Run.log_metric("ranking/num_queries_added", self.num_queries_added, query_idx)
+        Run.log_metric("rankings/max_query_idx", query_idx, query_idx)
+        Run.log_metric("rankings/num_queries_added", self.num_queries_added, query_idx)
 
         for depth in sorted(self.mrr_sums):
             score = self.mrr_sums[depth] / (query_idx+1.0)
-            Run.log_metric("ranking/MRR." + str(depth), score, query_idx)
+            Run.log_metric("rankings/MRR." + str(depth), score, query_idx)
 
         for depth in sorted(self.success_sums):
             score = self.success_sums[depth] / (query_idx+1.0)
-            Run.log_metric("ranking/Success." + str(depth), score, query_idx)
+            Run.log_metric("rankings/Success." + str(depth), score, query_idx)
 
         for depth in sorted(self.recall_sums):
             score = self.recall_sums[depth] / (query_idx+1.0)
-            Run.log_metric("ranking/Recall." + str(depth), score, query_idx)
+            Run.log_metric("rankings/Recall." + str(depth), score, query_idx)
 
     def output_final_metrics(self, path, query_idx, num_queries):
         assert query_idx + 1 == num_queries
@@ -111,4 +111,4 @@ def evaluate_recall(qrels, queries, topK_pids):
     print("Recall @ maximum depth =", recall_at_k)
 
 
-# TODO: If implicit qrels are used (for re-ranking), warn if a recall metric is requested + add an asterisk to output.
+# TODO: If implicit qrels are used (for re-rankings), warn if a recall metric is requested + add an asterisk to output.
