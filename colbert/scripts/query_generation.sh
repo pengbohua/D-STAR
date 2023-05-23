@@ -1,6 +1,6 @@
-##########################################################################################
-# 1. Feature Extraction: Extract claim (token) embeddings using ColBERT checkpoint #
-##########################################################################################
+###############################################################################################
+# 1. Feature Extraction: Extract claim (token) embeddings using ColBERT checkpoint            #
+###############################################################################################
 python -m colbert.query_generation.extract_zeshel_embs --amp --mask-punctuation \
 --doc_maxlen 300 \
 --bsize 256 \
@@ -11,10 +11,10 @@ python -m colbert.query_generation.extract_zeshel_embs --amp --mask-punctuation 
 --dataset-type scifact \
 --similarity cosine
 
-##########################################################################################
-# 2. Similarity Estimation: Compute cosine similarity K-NNs for each claim  #
-#    Build the graph: build a graph from K-NNs and a path considering region size #
-##########################################################################################
+################################################################################################
+# 2. Similarity Estimation: Compute cosine similarity K-NNs for each claim                     #
+#    Build the graph: build a graph from K-NNs and a path considering region size              #
+################################################################################################
 
 python -m colbert.query_generation.dstar \
 --feature-path colbert/query_generation/scifact_colbert/scifacts.npy \
@@ -26,7 +26,7 @@ python -m colbert.query_generation.dstar \
 --distance-threshold 0.65 \
 --region-size 5
 
-##########################################################################################
-# 3. Demonstrative query generation: Generate a sequence of queries from the path  #
-##########################################################################################
+#################################################################################################
+# 3. Demonstrative query generation: Generate a sequence of queries from the path using GPT3.5  #
+#################################################################################################
 python -m colbert.query_generation.dstar_queries

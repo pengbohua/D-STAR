@@ -1,7 +1,9 @@
 python -m supervision.self_training \
---rankings colbert/output/query_generation/ranking.tsv \
---output colbert/output/selftraining.epoch.1 \
+--rankings output/scifact_query_generation/ranking.tsv \
+--output output/self-training \
 --positives 1 \
 --depth+ 3 \
 --depth- 65 \
---cutoff- 64
+--cutoff- 64 \
+--epochs 1 \
+--overwrite

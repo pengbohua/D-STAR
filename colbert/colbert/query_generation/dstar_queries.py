@@ -6,6 +6,7 @@ from openai.error import RateLimitError, InvalidRequestError
 from tqdm import tqdm
 import logging
 import random
+import argparse
 
 
 logger = logging.getLogger(__name__)
@@ -25,7 +26,7 @@ logger.addHandler(file_handler)
 logger.info('Starting query generation...')
 
 
-key1 = "KEY1"
+key1 = "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"
 key2 = "KEY2"
 key_set = set()
 key_set.add(key1)
@@ -140,7 +141,7 @@ def convert_to_dict(mention_list):
     return new_mention_dict
 
 
-def naive_query_generation(samples):
+def naive_query_generation(samples, args):
     """
     Generate queries with fixed demonstration as anchor points.
     Will raise max context exceeding error (InvalidRequestError) because GPT3.5 take similar requests as dialogue
@@ -151,6 +152,8 @@ def naive_query_generation(samples):
 
     """
     results = {}
+    output_path = os.path.join(args.output_path, "queries.json")
+
     for i, sample_dict in tqdm(enumerate(samples[1:])):
         mid, mention, context, corpus, entity_desc = sample_dict["mention_id"], sample_dict["mention"], sample_dict["context"], sample_dict["corpus"], sample_dict["entity_desc"]
         _domain = corpus
@@ -181,14 +184,14 @@ def naive_query_generation(samples):
 
         if i % 10 == 0:
             print("Processed {} queries, saving".format(i+1))
-            with open("./test_queries1.json", "w") as f:
+            with open(os.path.join(args.output, "queries_temp.json"), "w") as f:
                 json.dump(results, f, indent=4)
 
-    with open("./test_queries.json", "w") as f:
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=4)
 
 
-def dstar_query_generation(mention_dict, paths):
+def dstar_query_generation(mention_dict, paths, args):
     """
     Generating query with path of D-STAR
     Args:
@@ -202,6 +205,7 @@ def dstar_query_generation(mention_dict, paths):
     num_request = 0
     results = {}
     failed_cases = {}
+    output_path = os.path.join(args.output_path, "queries.json")
 
     for i, path in tqdm(enumerate(paths)):
         # start a new dialogue session with current path
@@ -223,19 +227,19 @@ def dstar_query_generation(mention_dict, paths):
                 _res, response = _send_query(node, _demo+[_query])
                 results[node] = _res
             except RateLimitError:
-                time.sleep(20)
+                time.sleep(30)
                 temp_key1 = openai.api_key
                 openai.api_key = random.sample(key_set - {temp_key1}, 1)[0]
                 try:
                     _res, response = _send_query(node, _demo+[_query])
                 except RateLimitError:
-                    time.sleep(15)
+                    time.sleep(30)
                     openai.api_key = random.sample(key_set - {temp_key1, openai.api_key}, 1)[0]
                     _res, response = _send_query(node, _demo+[_query])
                 openai.api_key = key1
                 results[node] = _res
             except InvalidRequestError:
-                time.sleep(15)
+                time.sleep(30)
                 logger.error("Maximum context exceeded: node:{}, prompt: {}".format(node, _demo+[_query]))
                 temp_key = openai.api_key
                 openai.api_key = random.sample(key_set - {temp_key}, 1)[0]
@@ -264,21 +268,33 @@ def dstar_query_generation(mention_dict, paths):
 
             if num_request % 3 == 0:
                 print("Processed {} queries, saving".format(i+1))
-                with open("colbert/query_generation/queries_temp.json", "w") as f:
+                with open(os.path.join(args.output_path, "queries_temp.json"), "w") as f:
                     json.dump(results, f, indent=4)
 
             num_request += 1
-            time.sleep(22)
+            time.sleep(60)
 
-    with open("colbert/query_generation/queries.json", "w") as f:
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=4)
 
 
 if __name__ == "__main__":
-    with open("../data/scifact/query_path.jsonl", "r") as f:
+    parser = argparse.ArgumentParser(description='Similarity estimation to output k-nn for each claims')
+    parser.add_argument('--query-path', required=False, type=str,
+                        default="../data/scifact/query_path.jsonl",
+                        help='A query path of nodes sampled from the graph')
+    parser.add_argument('--mention-entity', required=False, type=str,
+                        default="../data/scifact/mention_entity.json",
+                        help='output path of the knn neighbors of the current claims')
+    parser.add_argument('--output-path', required=False, type=str,
+                        default="../data/scifact",
+                        help='output path of the knn neighbors of the current claims')
+
+    args = parser.parse_args()
+    with open(args.query_path, "r") as f:
         scifact_query_path = json.load(f)
 
-    with open("../data/scifact/mention_entity.json", "r") as f:
+    with open(args.mention_entity, "r") as f:
         mention_entity_dict = json.load(f)
     total_nodes = 0
     print("mentions", len(mention_entity_dict))
@@ -287,5 +303,5 @@ if __name__ == "__main__":
         total_nodes += len(path)
 
     mention_entity_dict = convert_to_dict(mention_entity_dict)
-    dstar_query_generation(mention_entity_dict, scifact_query_path)
+    dstar_query_generation(mention_entity_dict, scifact_query_path, args=args)
 

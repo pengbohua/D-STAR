@@ -4,6 +4,7 @@ import git
 import tqdm
 import ujson
 import random
+import shutil
 
 from argparse import ArgumentParser
 from colbert.utils.utils import print_message, load_ranking, groupby_first_item
@@ -85,20 +86,21 @@ def main(args):
 
     print_message("#> Writing {}M examples to file.".format(len(Triples) / 1000.0 / 1000.0))
 
-    os.makedirs("/".join(args.output.split("/")[:-1]), exist_ok=True)
-    with open(args.output, 'w') as f:
+    os.makedirs(args.output, exist_ok=True)
+    save_path = os.path.join(args.output, str(args.epochs))
+    with open(save_path, 'w') as f:
         for example in Triples:
             ujson.dump(example, f)
             f.write('\n')
 
-    with open(f'{args.output}.meta', 'w') as f:
+    with open(f'{save_path}.meta', 'w') as f:
         args.cmd = ' '.join(sys.argv)
         args.git_hash = git.Repo(search_parent_directories=True).head.object.hexsha
         ujson.dump(args.__dict__, f, indent=4)
         f.write('\n')
 
     print('\n\n', args, '\n\n')
-    print(args.output)
+    print('Saving the pseudo labels to {}'.format(args.output))
     print_message("#> Done.")
 
 
@@ -108,10 +110,12 @@ if __name__ == "__main__":
     parser = ArgumentParser(description='Create training triples from ranked list.')
 
     # Input / Output Arguments
-    parser.add_argument('--rankings', dest='rankings', required=True, type=str)
-    parser.add_argument('--output', dest='output', required=True, type=str)
+    parser.add_argument('--rankings', dest='rankings', required=True, type=str, help='query ranking of last iteration')
+    parser.add_argument('--output', dest='output', required=True, type=str, help='query ranking of current iteration')
+    parser.add_argument('--overwrite', action='store_true', dest='overwrite')
 
     # Weak Supervision Arguments.
+    parser.add_argument('--epochs', dest='epochs', required=True, type=int, default=1)
     parser.add_argument('--positives', dest='positives', required=True, type=int)
     parser.add_argument('--depth+', dest='depth_positive', required=True, type=int)
 
@@ -119,7 +123,8 @@ if __name__ == "__main__":
     parser.add_argument('--cutoff-', dest='cutoff_negative', required=True, type=int)
 
     args = parser.parse_args()
-
+    if args.overwrite and os.path.exists(args.output):
+        shutil.rmtree(args.output)
     assert not os.path.exists(args.output), args.output
 
     main(args)

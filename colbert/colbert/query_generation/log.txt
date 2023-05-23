@@ -1,1 +1,57 @@
 2023-05-16 23:07:51,195 - INFO - Starting query generation...
+2023-05-23 10:12:48,995 - INFO - Starting query generation...
+2023-05-23 10:12:49,280 - ERROR - An error occurs: <empty message>. Continue processing with the current path: ['185', '381', '1266', '1265', '223'], node: 185, prompts: [{'role': 'system', 'content': 'Your task will be to generate a Question to the Answer with a Background sentence. Make sure not to leak the Answer directly to the Question.'}, {'role': 'user', 'content': 'Mention: liver methadone\n Background: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n Answer: Policies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies.'}, {'role': 'assistant', 'content': 'Question: What impact do policies which require discontinuation of methadone treatment have on the efficacy of liver transplant programs?'}, {'role': 'user', 'content': 'Mention: breast cancer genetic factors\n Background: Breast cancer development is determined exclusively by genetic factors.\n Answer: Risks of breast cancer associated with low-penetrance susceptibility polymorphisms do not vary significantly with these ten established environmental risk factors.'}, {'role': 'assistant', 'content': 'Question: Is there a correlation between breast cancer and genetic factors?'}]
+Traceback (most recent call last):
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 225, in dstar_query_generation
+    _res, response = _send_query(node, _demo+[_query])
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 120, in _send_query
+    response = openai.ChatCompletion.create(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 226, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 620, in _interpret_response
+    self._interpret_response_line(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 683, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: <empty message>
+2023-05-23 11:21:50,030 - INFO - Starting query generation...
+2023-05-23 11:22:15,890 - INFO - Starting query generation...
+2023-05-23 11:24:38,509 - INFO - Starting query generation...
+2023-05-23 11:24:38,689 - ERROR - An error occurs: <empty message>. Continue processing with the current path: ['185', '381', '1266', '1265', '223'], node: 185, prompts: [{'role': 'system', 'content': 'Your task will be to generate a Question to the Answer with a Background sentence. Make sure not to leak the Answer directly to the Question.'}, {'role': 'user', 'content': 'Mention: liver methadone\n Background: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n Answer: Policies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies.'}, {'role': 'assistant', 'content': 'Question: What impact do policies which require discontinuation of methadone treatment have on the efficacy of liver transplant programs?'}, {'role': 'user', 'content': 'Mention: breast cancer genetic factors\n Background: Breast cancer development is determined exclusively by genetic factors.\n Answer: Risks of breast cancer associated with low-penetrance susceptibility polymorphisms do not vary significantly with these ten established environmental risk factors.'}, {'role': 'assistant', 'content': 'Question: Is there a correlation between breast cancer and genetic factors?'}]
+Traceback (most recent call last):
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 227, in dstar_query_generation
+    _res, response = _send_query(node, _demo+[_query])
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 119, in _send_query
+    response = openai.ChatCompletion.create(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 226, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 620, in _interpret_response
+    self._interpret_response_line(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 683, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: <empty message>
+2023-05-23 11:25:01,579 - INFO - Starting query generation...
+2023-05-23 11:25:01,776 - ERROR - An error occurs: <empty message>. Continue processing with the current path: ['185', '381', '1266', '1265', '223'], node: 185, prompts: [{'role': 'system', 'content': 'Your task will be to generate a Question to the Answer with a Background sentence. Make sure not to leak the Answer directly to the Question.'}, {'role': 'user', 'content': 'Mention: liver methadone\n Background: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n Answer: Policies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies.'}, {'role': 'assistant', 'content': 'Question: What impact do policies which require discontinuation of methadone treatment have on the efficacy of liver transplant programs?'}, {'role': 'user', 'content': 'Mention: breast cancer genetic factors\n Background: Breast cancer development is determined exclusively by genetic factors.\n Answer: Risks of breast cancer associated with low-penetrance susceptibility polymorphisms do not vary significantly with these ten established environmental risk factors.'}, {'role': 'assistant', 'content': 'Question: Is there a correlation between breast cancer and genetic factors?'}]
+Traceback (most recent call last):
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 227, in dstar_query_generation
+    _res, response = _send_query(node, _demo+[_query])
+  File "/home/marvinpeng/wikidata5m/peng/D-STAR/colbert/colbert/query_generation/dstar_queries.py", line 119, in _send_query
+    response = openai.ChatCompletion.create(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 226, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 620, in _interpret_response
+    self._interpret_response_line(
+  File "/home/marvinpeng/miniconda3/lib/python3.8/site-packages/openai/api_requestor.py", line 683, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: <empty message>
