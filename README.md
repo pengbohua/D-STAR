@@ -7,6 +7,7 @@ This repository contains the code of D-STAR (ACM MM 2023 submission 2615) and [F
 *** **UPDATE** ***
 
 We have uploaded D-STAR query generation scripts with GPT3.5 as the foundation model.
+
 We have uploaded the D-STAR query generation script with [LLaMA](https://mega.nz/folder/0KtV3IpD#b0ZRaOMMsqFsD9y4h2ekAg) as the foundation model
 ## Methods
 Our approach utilizes few-shot examples to prompt a foundation model to generate factoid context-related questions for mention-entity pairs. The order of these examples is determined by a sampled path from a graph encoded by the retriever. We then directly adapt the retrieval model to the generated query and labels retrieved entity documents with its previous knowledge, aided by a pseudo label denoising strategy. Our group contrastive learning strategy shares negative samples within subgraphs. The updated model recomputes distances within the unvisited graph and optimizes the demonstration priority queue for the next self-training cycle. Our demonstrative self-training strategy updates question generation and question answering simultaneously **without accessing source domain data**. 
