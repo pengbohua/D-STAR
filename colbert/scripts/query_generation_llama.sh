@@ -29,4 +29,4 @@ python -m colbert.query_generation.dstar \
 #################################################################################################
 # 3. Demonstrative query generation: Generate a sequence of queries from the path using GPT3.5  #
 #################################################################################################
-python -m colbert.query_generation.dstar_queries
+python -m colbert.query_generation.dstar_queries_llama --llama-path PATH_TO_LLAMA
