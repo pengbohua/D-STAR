@@ -14,10 +14,10 @@ class EntityLinker(nn.Module):
     """
     def __init__(self, pretrained_model_path):
         super(EntityLinker, self).__init__()
-        self.config = AutoConfig.from_pretrained(pretrained_model_path)
+        self.config = AutoConfig.from_pretrained("bert-base-uncased")
         self.hidden_size = self.config.hidden_size
         self.entity_encoder = BertModel(config=self.config, add_pooling_layer=False)
-        self.load_pretrained_model(pretrained_model_path)
+        self.load_pretrained_model("bert-base-uncased")
 
         # adding mention span as a new type to token type ids
         old_type_vocab_size = self.config.type_vocab_size

@@ -15,13 +15,11 @@ class EntityLinker(nn.Module):
     """
     def __init__(self,):
         super(EntityLinker, self).__init__()
-        self.config = AutoConfig.from_pretrained('/home/marvinpeng/wikidata5m/peng/EntityLinkingForFandom/checkpoints/sentence_transformers')
-        # self.config = AutoConfig.from_pretrained('bert-base-uncased')
+        self.config = AutoConfig.from_pretrained('bert-base-uncased')
         self.hidden_size = self.config.hidden_size
 
         self.mention_encoder = BertModel(config=self.config, add_pooling_layer=False)
-        # self.mention_encoder.from_pretrained('bert-base-uncased')
-        self.mention_encoder.from_pretrained('/home/marvinpeng/wikidata5m/peng/EntityLinkingForFandom/checkpoints/sentence_transformers')
+        self.mention_encoder.from_pretrained('bert-base-uncased')
 
         # adding mention span as a new type to token type ids
         old_type_vocab_size = self.config.type_vocab_size
