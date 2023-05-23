@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0
 
 if [ -z $DOCDIR]; then
   DOCDIR="data/documents"
@@ -32,10 +32,12 @@ python main.py --document-file $documents \
 --eval-mentions-file $MENTIONDIR/test.json \
 --train-tfidf-candidates-file $TFIDFDIR/train_tfidfs.json \
 --eval-tfidf-candidates-file  $TFIDFDIR/test_tfidfs.json \
---train-batch-size 64 \
---eval-batch-size 64 \
+--train-batch-size 8 \
+--eval-batch-size 8 \
 --use-tf-idf-negatives \
 --max-seq-length 64 \
---learning-rate 1e-5 \
+--learning-rate 0.01 \
+--lora \
+--model-type 'contrastive' \
 --epochs 2 \
 --eval-model-path checkpoint/group_contrastive/

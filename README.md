@@ -103,12 +103,20 @@ D-STAR query generation using LLaMA
 cd colbert
 bash scripts/query_generation_llama.sh
 ```
-## Self-training
+## Self-training (Pseudo Labelling)
 ```bash
 cd colbert
 bash scripts/self_training.sh
 ```
-
+## Group contrastive learning
+Run the group contrastive learning with 4~8 GPUs to achieve the similar retrieval performance on Fandomwiki and Zeshel. 
+```bash
+bash train.sh
+```
+Run the PEFT version of group contrastive learning on a single GPU with (BitFit \ LoRA \ Adatper \ PromptTuning)!
+```bash
+bash train_peft.sh
+```
 ## TODO Checklist
 
 - [x] Evaluation scripts uploaded.

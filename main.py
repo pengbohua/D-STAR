@@ -180,5 +180,6 @@ def main():
     logger.info('Args={}'.format(json.dumps(args.__dict__, ensure_ascii=False, indent=4)))
     trainer.run()
 
+
 if __name__ == '__main__':
     main()
