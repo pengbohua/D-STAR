@@ -125,5 +125,4 @@ bash train_peft.sh
 - [x] D-STAR query generation with LLaMA.
 - [x] Self-training scripts.
 - [x] Contrastive training scripts.
-- [ ] Pipeline hyper parameters.
-- [ ] Result analysis scripts.
+- [ ] General Self-training pipeline.
