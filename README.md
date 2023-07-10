@@ -1,7 +1,7 @@
 # D-STAR: Demonstrative Self-Training for Source-free Domain Adaptation of Entity Linking with Foundation Models
 ## Overview
 This repository contains the code of D-STAR and [Fandomwiki](https://mega.nz/folder/8KEmnbxK#0QKy0QEK-u9Z84hFogf8dw) dataset to evaluate source-free domain adaptation. In this work, we present D-STAR, a framework for solving unsupervised entity linking problems using Demonstrative Self-Training and source-free domain adaptation. 
-<img src="./images/teaser.png"/>
+<img src="./images/teaser1.png"/>
 <img src="./images/overview.png"/>
 
 *** **UPDATE** ***
