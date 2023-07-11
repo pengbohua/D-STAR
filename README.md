@@ -5,12 +5,13 @@ This repository contains the code of D-STAR and [Fandomwiki](https://mega.nz/fol
 <img src="./images/overview.png"/>
 
 *** **UPDATE** ***
+We have uploaded comparison of running examples to illustrate our method.
 
 We have uploaded D-STAR query generation scripts with GPT3.5 as the foundation model.
 
-We have uploaded the D-STAR query generation script with [LLaMA](https://mega.nz/folder/0KtV3IpD#b0ZRaOMMsqFsD9y4h2ekAg) as the foundation model
+We have uploaded the D-STAR query generation scripts with **[LLaMA](https://mega.nz/folder/0KtV3IpD#b0ZRaOMMsqFsD9y4h2ekAg)** we quantized as the foundation model
 ## Methods
-Our approach utilizes few-shot examples to prompt a foundation model to generate factoid context-related questions for mention-entity pairs. The order of these examples is determined by a sampled path from a graph encoded by the retriever. We then directly adapt the retrieval model to the generated query and labels retrieved entity documents with its previous knowledge, aided by a pseudo label denoising strategy. Our group contrastive learning strategy shares negative samples within subgraphs. The updated model recomputes distances within the unvisited graph and optimizes the demonstration priority queue for the next self-training cycle. Our demonstrative self-training strategy updates question generation and question answering simultaneously **without accessing source domain data**. 
+Our approach utilizes few-shot examples to prompt a foundation model to generate factoid context-relted questions for mention-entity pairs. The order of these examples is determined by a sampled path from a graph encoded by the retriever. We then directly adapt the retrieval model to the generated query and labels retrieved entity documents with its previous knowledge, aided by a pseudo label denoising strategy. Our group contrastive learning strategy shares negative samples within subgraphs. The updated model recomputes distances within the unvisited graph and optimizes the demonstration priority queue for the next self-training cycle. Our demonstrative self-training strategy updates question generation and question answering simultaneously **without accessing source domain data**. 
 
 ## Requirements
 Our evaluation code is tested on Ubuntu 20.04 with RTX-3090. To install the required packages:
@@ -67,6 +68,7 @@ download checkpoints
 | bi_encoder (D-STAR)        | 831 MB   | [Result](https://mega.nz/file/wbEBmCJS#1Iol5OVH13W5jxJ5QqflxToaQtYjg-Db34WDJzvtUsg)/[Checkpoint](https://mega.nz/folder/8HMw2KJR#iGgjtjyd0CX92rKs656P5g)       |
 | bi_encoder_cand1_group_contrastive_learning   | 831 MB   | [Result](https://mega.nz/file/sKtiXBRJ#Z2kjwipYa3iJEFFzOHJdfrln3UstapRtn_zgYcSWhFs)/[Checkpoint](https://mega.nz/folder/ob8mXYoL#1YXiUlX8RI7NZdrAnvypdA) |
 | cross_encoder      | 831 MB   | [Result](https://mega.nz/file/ITlnGTbY#GRXG2l8D3k5fZytlK789FzMpOOgA-V1jnyjQhYs3kP4)/[Checkpoint](https://mega.nz/folder/xKVXhD6Y#74N_WPsMqqXGsc_bx7OlXAr)    |
+|ColBERT-v2|406MB|[Checkpoint](https://downloads.cs.stanford.edu/nlp/data/colbert/colbertv2/colbertv2.0.tar.gz)|
 
 Checkpoint structure
 ```bash
