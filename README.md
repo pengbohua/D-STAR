@@ -164,4 +164,4 @@ Table 4 Comparison of question generation extrapolation with random demonstratio
 - [x] D-STAR query generation with LLaMA.
 - [x] Self-training scripts.
 - [x] Contrastive training scripts.
-- [ ] General Self-training pipeline.
+- [x] General Self-training pipeline.
