@@ -68,7 +68,7 @@ download checkpoints
 | ------------------ | -------- | ------------------------------------------------------------ |
 | bi_encoder (D-STAR)        | 831 MB   | [Result](https://mega.nz/file/wbEBmCJS#1Iol5OVH13W5jxJ5QqflxToaQtYjg-Db34WDJzvtUsg)/[Checkpoint](https://mega.nz/folder/8HMw2KJR#iGgjtjyd0CX92rKs656P5g)       |
 | bi_encoder_cand1_group_contrastive_learning   | 831 MB   | [Result](https://mega.nz/file/sKtiXBRJ#Z2kjwipYa3iJEFFzOHJdfrln3UstapRtn_zgYcSWhFs)/[Checkpoint](https://mega.nz/folder/ob8mXYoL#1YXiUlX8RI7NZdrAnvypdA) |
-| cross_encoder      | 831 MB   | [Result](https://mega.nz/file/ITlnGTbY#GRXG2l8D3k5fZytlK789FzMpOOgA-V1jnyjQhYs3kP4)/[Checkpoint](https://mega.nz/folder/xKVXhD6Y#74N_WPsMqqXGsc_bx7OlXAr)    |
+| cross_encoder      | 831 MB   | [Result](https://mega.nz/file/ITlnGTbY#GRXG2l8D3k5fZytlK789FzMpOOgA-V1jnyjQhYs3kP4)/[Checkpoint](https://mega.nz/file/5alGDbAD#aieiMDvoAbC-ULUGfJ6x_ZVFqaAcZfau1ukPgAuWF0E)    |
 |ColBERT-v2|406MB|[Checkpoint](https://downloads.cs.stanford.edu/nlp/data/colbert/colbertv2/colbertv2.0.tar.gz)|
 
 Checkpoint structure
